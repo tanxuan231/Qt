@@ -18,68 +18,68 @@ void MyWindow::setType(Type t)
 void MyWindow::paintEvent(QPaintEvent * event)
 {
     QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing); // ¿¹¾â³İ
+    painter.setRenderHint(QPainter::Antialiasing); // æŠ—é”¯é½¿
 
     painter.setClipping(true);
-    QPainterPath canDrawingPathArea; // ÄÜ»­ÉÏµÄÇøÓò
-    canDrawingPathArea.addRoundedRect(rect(), 50, 50);
-    canDrawingPathArea.setFillRule(Qt::WindingFill); // ¶à¿éÇøÓò×éºÏÌî³äÄ£Ê½
+    QPainterPath canDrawingPathArea; // èƒ½ç”»ä¸Šçš„åŒºåŸŸ
+    canDrawingPathArea.addRoundedRect(rect(), 50, 50); // è¿™é‡Œçš„50æ˜¯åœ†è§’å¹…åº¦
+    canDrawingPathArea.setFillRule(Qt::WindingFill); // å¤šå—åŒºåŸŸç»„åˆå¡«å……æ¨¡å¼
 
     switch (m_type)
     {
-    case LeftTop:// ×óÉÏ½ÇÔ²½Ç
+    case LeftTop:// å·¦ä¸Šè§’åœ†è§’
     {
-        canDrawingPathArea.addRect(0, height() - 50, 50, 50); // Ìî³ä×óÏÂ½Ç
-        canDrawingPathArea.addRect(width() - 50, 0, 50, 50); // Ìî³äÓÒÉÏ½Ç
-        canDrawingPathArea.addRect(width() - 50, height() - 50, 50, 50);// Ìî³äÓÒÏÂ½Ç
+        canDrawingPathArea.addRect(0, height() - 50, 50, 50); // å¡«å……å·¦ä¸‹è§’
+        canDrawingPathArea.addRect(width() - 50, 0, 50, 50); // å¡«å……å³ä¸Šè§’
+        canDrawingPathArea.addRect(width() - 50, height() - 50, 50, 50);// å¡«å……å³ä¸‹è§’
         break;
     }
-    case RightTop: // ÓÒÉÏ½ÇÔ²½Ç
+    case RightTop: // å³ä¸Šè§’åœ†è§’
     {
-        canDrawingPathArea.addRect(0, height() - 50, 50, 50); // Ìî³ä×óÏÂ½Ç
-        canDrawingPathArea.addRect(0, 0, 50, 50); // Ìî³ä×óÉÏ½Ç
-        canDrawingPathArea.addRect(width() - 50, height() - 50, 50, 50);// Ìî³äÓÒÏÂ½Ç
+        canDrawingPathArea.addRect(0, height() - 50, 50, 50); // å¡«å……å·¦ä¸‹è§’
+        canDrawingPathArea.addRect(0, 0, 50, 50); // å¡«å……å·¦ä¸Šè§’
+        canDrawingPathArea.addRect(width() - 50, height() - 50, 50, 50);// å¡«å……å³ä¸‹è§’
         break;
     }
-    case LeftBottom:// ×óÏÂ½ÇÔ²½Ç
+    case LeftBottom:// å·¦ä¸‹è§’åœ†è§’
     {
-        canDrawingPathArea.addRect(width() - 50, 0, 50, 50); // Ìî³äÓÒÉÏ½Ç
-        canDrawingPathArea.addRect(width() - 50, height() - 50, 50, 50);// Ìî³äÓÒÏÂ½Ç
-        canDrawingPathArea.addRect(0, 0, 50, 50); // Ìî³ä×óÉÏ½Ç
+        canDrawingPathArea.addRect(width() - 50, 0, 50, 50); // å¡«å……å³ä¸Šè§’
+        canDrawingPathArea.addRect(width() - 50, height() - 50, 50, 50);// å¡«å……å³ä¸‹è§’
+        canDrawingPathArea.addRect(0, 0, 50, 50); // å¡«å……å·¦ä¸Šè§’
         break;
     }
-    case RightBottom: // ÓÒÏÂ½ÇÔ²½Ç
+    case RightBottom: // å³ä¸‹è§’åœ†è§’
     {
-        canDrawingPathArea.addRect(0, height() - 50, 50, 50); // Ìî³ä×óÏÂ½Ç
-        canDrawingPathArea.addRect(width() - 50, 0, 50, 50); // Ìî³äÓÒÉÏ½Ç
-        canDrawingPathArea.addRect(0, 0, 50, 50); // Ìî³ä×óÉÏ½Ç
+        canDrawingPathArea.addRect(0, height() - 50, 50, 50); // å¡«å……å·¦ä¸‹è§’
+        canDrawingPathArea.addRect(width() - 50, 0, 50, 50); // å¡«å……å³ä¸Šè§’
+        canDrawingPathArea.addRect(0, 0, 50, 50); // å¡«å……å·¦ä¸Šè§’
         break;
     }
-    case Top:         // ÉÏÁ½¸öÔ²½Ç
+    case Top:         // ä¸Šä¸¤ä¸ªåœ†è§’
     {
-        canDrawingPathArea.addRect(0, height() - 50, 50, 50); // Ìî³ä×óÏÂ½Ç
-        canDrawingPathArea.addRect(width() - 50, height() - 50, 50, 50);// Ìî³äÓÒÏÂ½Ç
+        canDrawingPathArea.addRect(0, height() - 50, 50, 50); // å¡«å……å·¦ä¸‹è§’
+        canDrawingPathArea.addRect(width() - 50, height() - 50, 50, 50);// å¡«å……å³ä¸‹è§’
         break;
     }
-    case Bottom:     // ÏÂÁ½¸öÔ²½Ç
+    case Bottom:     // ä¸‹ä¸¤ä¸ªåœ†è§’
     {
-        canDrawingPathArea.addRect(width() - 50, 0, 50, 50); // Ìî³äÓÒÉÏ½Ç
-        canDrawingPathArea.addRect(0, 0, 50, 50); // Ìî³ä×óÉÏ½Ç
+        canDrawingPathArea.addRect(width() - 50, 0, 50, 50); // å¡«å……å³ä¸Šè§’
+        canDrawingPathArea.addRect(0, 0, 50, 50); // å¡«å……å·¦ä¸Šè§’
         break;
     }
-    case Left:  // ×óÁ½¸öÔ²½Ç
+    case Left:  // å·¦ä¸¤ä¸ªåœ†è§’
     {
-        canDrawingPathArea.addRect(width() - 50, 0, 50, 50); // Ìî³äÓÒÉÏ½Ç
-        canDrawingPathArea.addRect(width() - 50, height() - 50, 50, 50);// Ìî³äÓÒÏÂ½Ç
+        canDrawingPathArea.addRect(width() - 50, 0, 50, 50); // å¡«å……å³ä¸Šè§’
+        canDrawingPathArea.addRect(width() - 50, height() - 50, 50, 50);// å¡«å……å³ä¸‹è§’
         break;
     }
-    case Right:      // ÓÒÁ½¸öÔ²½Ç
+    case Right:      // å³ä¸¤ä¸ªåœ†è§’
     {
-        canDrawingPathArea.addRect(0, height() - 50, 50, 50); // Ìî³ä×óÏÂ½Ç
-        canDrawingPathArea.addRect(0, 0, 50, 50); // Ìî³ä×óÉÏ½Ç
+        canDrawingPathArea.addRect(0, height() - 50, 50, 50); // å¡«å……å·¦ä¸‹è§’
+        canDrawingPathArea.addRect(0, 0, 50, 50); // å¡«å……å·¦ä¸Šè§’
         break;
     }
-    case All:          // ËÄ¸ö½ÇÔ²½Ç
+    case All:          // å››ä¸ªè§’åœ†è§’
     {
         break;
     }
